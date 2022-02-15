@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info:
+  title: Crysec Administration Panel API
+  description: Crysec Administration Panel API
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  
