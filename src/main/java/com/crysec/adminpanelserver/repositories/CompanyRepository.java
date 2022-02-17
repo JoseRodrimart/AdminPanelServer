@@ -24,4 +24,10 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
             "FROM Company c " +
             "WHERE c.id = :id"  )
     List<CryGroup> findGroups(Long id);
+
+    @Query("SELECT c.id FROM Company c WHERE c.cod = :cod")
+    Optional<Long> findByCod(@Param("cod") String cod);
+
+
+
 }

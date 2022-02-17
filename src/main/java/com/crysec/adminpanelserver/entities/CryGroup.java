@@ -1,5 +1,6 @@
 package com.crysec.adminpanelserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -18,10 +19,18 @@ public class CryGroup {
     private Long id;
     @Column
     private String name;
+
     @Column
-    private String description;
+    private EGroupType type;
+
     @Column
     private String image;
+
+ /*   @ToString.Exclude*/
+    @JsonIgnore
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "CryGroup_regularUsers",
@@ -37,6 +46,27 @@ public class CryGroup {
 
     public CryGroup(String name) {
         this.name = name;
+    }
+
+    public CryGroup(String name, EGroupType type, String image, Company company, List<CryUser> regularUsers, List<CryUser> adminUsers) {
+        this.name = name;
+        this.type = type;
+        this.image = image;
+        this.company = company;
+        this.regularUsers = regularUsers;
+        this.adminUsers = adminUsers;
+    }
+
+    public CryGroup(String name, String type, String image) {
+        this.name = name;
+        this.type = EGroupType.valueOf(type);
+        this.image = image;
+    }
+
+    public CryGroup(String name, String type, String image, Company company) {
+        this.name = name;
+        this.type = EGroupType.valueOf(type);
+        this.image = image;
     }
 
     public void addRegularUser(CryUser user){

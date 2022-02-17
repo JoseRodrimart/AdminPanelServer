@@ -6,25 +6,48 @@ import com.crysec.adminpanelserver.entities.CryUser;
 import com.crysec.adminpanelserver.exceptions.CompanyNotFoundException;
 import com.crysec.adminpanelserver.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Hashtable;
 import java.util.List;
 
 @RestController
 public class CompanyController {
+    Hashtable<String, String> credentials = new Hashtable<>(){
+        {
+            put("crysec@mail.com", "crysec");
+            put("iespacomolla@mail.com", "iespacomolla");
+        }
+    };
+
     @Autowired
     CompanyService companyService;
 
     /**
      * Get a company by its ID
      *
-     * @param id the id
+     *
      * @return the company
      */
 
+    @GetMapping("/login/{mail}/{password}")
+    public Long login(@PathVariable String mail, @PathVariable String password){
+        if(credentials.containsKey(mail)){
+            if(credentials.get(mail).equals(password)){
+                if(mail.equals("crysec@mail.com")){
+                    return companyService.findByCod("1");
+                } else {
+                    return companyService.findByCod("2");
+                }
+            }
+        }
+        return 0L;
+    }
+
+    @GetMapping("/companies")
+    public List<Company> getCompanies(){
+        return companyService.getCompanies();
+    }
     @GetMapping("/company/{id}")
     public Company getCompany(@PathVariable Long id){
         return companyService.findById(id).orElseThrow(() -> new CompanyNotFoundException(id));
@@ -42,4 +65,5 @@ public class CompanyController {
 
     @GetMapping("/company/{id}/group")
     public List<CryGroup>  getCompanyGroups(@PathVariable Long id){ return companyService.getGroups(id);}
+
 }

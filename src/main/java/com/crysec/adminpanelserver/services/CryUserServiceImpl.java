@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class CryUserServiceImpl implements CryUserService{
@@ -29,5 +30,15 @@ public class CryUserServiceImpl implements CryUserService{
         CryUser user = cryUserRepository.findById(id).orElseThrow(()->new UserNotFoundException(id));
         user.setCompany(null);
         //cryUserRepository.save(user);
+    }
+
+    @Override
+    public List<CryUser> getAllUsers(){
+        return cryUserRepository.findAll();
+    }
+
+    @Override
+    public CryUser findById(Long id) {
+        return cryUserRepository.findById(id).get();
     }
 }

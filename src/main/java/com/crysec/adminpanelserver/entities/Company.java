@@ -1,6 +1,8 @@
 package com.crysec.adminpanelserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import lombok.ToString.Exclude;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -17,16 +19,20 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long id;
+    @JsonIgnore
+    @Column(unique = true)
+    private String cod;
     @Column(unique = true)
     private String name;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<CryUser> cryUsers = new ArrayList<>();
 
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "company", cascade = {CascadeType.ALL})
     private List<CryGroup> cryGroups = new ArrayList<>();
 
-    public Company(String name) {
+    public Company(String cod, String name) {
+        this.cod = cod;
         this.name = name;
     }
 
