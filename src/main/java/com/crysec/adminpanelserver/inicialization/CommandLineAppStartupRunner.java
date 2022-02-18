@@ -30,19 +30,32 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     public void run(String...args) throws Exception {
 
         CryUser userA  = new CryUser("jose@mail.com");
+        userA.setName("Jose");
         CryUser userB = new CryUser("fernando@mail.com");
+        userA.setName("Fernando");
         CryUser userC  = new CryUser("juan@mail.com");
+        userA.setName("Juan");
         CryUser userD  = new CryUser("blas@mail.com");
+        userA.setName("Blas");
         CryUser userE  = new CryUser("ruben@mail.com");
+        userA.setName("Rubén");
         CryUser userF  = new CryUser("emilio@mail.com");
+        userA.setName("Emilio");
         CryUser userG  = new CryUser("carlos@mail.com");
+        userA.setName("Carlos");
         CryUser userH  = new CryUser("sandra@mail.com");
+        userA.setName("Sandra");
         CryUser userI  = new CryUser("manu@mail.com");
+        userA.setName("Manuel");
         CryUser userJ  = new CryUser("joaquin@mail.com");
+        userA.setName("Joaquín");
+
 
         CryUser userK  = new CryUser("miguel@mail.com");
-
+        userA.setName("Miguel");
         CryUser userL = new CryUser("ricardo@mail.com");
+        userA.setName("Ricardo");
+
         cryUserService.saveUser(userA);
         cryUserService.saveUser(userB);
         cryUserService.saveUser(userC);
