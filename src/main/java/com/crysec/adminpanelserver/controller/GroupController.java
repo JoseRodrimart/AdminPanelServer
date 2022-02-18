@@ -26,7 +26,6 @@ public class GroupController {
         groupService.deleteGroupById(id);
     }
 
-
     @GetMapping("/group")
     public List<CryGroup> getAllGroups(){
         return groupService.getAllGroups();
