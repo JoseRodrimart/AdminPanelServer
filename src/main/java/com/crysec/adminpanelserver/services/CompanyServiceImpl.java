@@ -45,4 +45,9 @@ return companyRepository.findById(id);
     public List<CryGroup> getGroups(Long id) {
         return companyRepository.findGroups(id);
     }
+
+    @Override
+    public Long findByCod(String cod) {
+        return companyRepository.findByCod(cod).get();
+    }
 }

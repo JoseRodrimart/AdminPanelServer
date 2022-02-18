@@ -17,4 +17,5 @@ public interface CompanyService {
     List<CryUser> getUsers(Long id);
 
     List<CryGroup> getGroups(Long id);
+    Long findByCod(String cod);
 }

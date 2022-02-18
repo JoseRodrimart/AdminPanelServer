@@ -24,16 +24,24 @@ public class Company {
     private String cod;
     @Column(unique = true)
     private String name;
+    @Column
+    private String image;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<CryUser> cryUsers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "company", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<CryGroup> cryGroups = new ArrayList<>();
 
     public Company(String cod, String name) {
         this.cod = cod;
         this.name = name;
+    }
+
+    public Company(String cod, String name, String image) {
+        this.cod = cod;
+        this.name = name;
+        this.image = image;
     }
 
     public void addUser(CryUser user){ cryUsers.add(user);}

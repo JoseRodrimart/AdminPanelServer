@@ -28,11 +28,11 @@ public class CryGroup {
 
  /*   @ToString.Exclude*/
     @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(name = "CryGroup_regularUsers",
             joinColumns = @JoinColumn(name = "CryGroup_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "regularUsers_id", referencedColumnName = "id"))

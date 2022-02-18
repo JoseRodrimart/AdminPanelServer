@@ -92,11 +92,13 @@ public class CryGroupServiceImp implements CryGroupService {
     public void addGroup(Long idCompany, String name, String type) {
 
         var company = companyService.findById(idCompany).get();
-        var image = "https://avatars.dicebear.com/api/identicon/" + name + "adsf" + type + ".png";
-        CryGroup group = new CryGroup(name, type, image, company);
-        saveGroup(group);
+        System.out.println(company.getId());
+        var image = "https://avatars.dicebear.com/api/identicon/" + name + "adsf.png";
+        CryGroup group = new CryGroup(name, type, image);
+        cryGroupRepository.save(group);
+        group.setCompany(company);
+        //saveGroup(group);
         company.addGroup(group);
-
     }
 
     @Transactional

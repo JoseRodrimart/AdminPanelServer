@@ -43,11 +43,11 @@ public class CompanyController {
         }
         return 0L;
     }
-
-    @GetMapping("/companies")
-    public List<Company> getCompanies(){
-        return companyService.getCompanies();
-    }
+//
+//    @GetMapping("/companies")
+//    public List<Company> getCompanies(){
+//        return companyService.getCompanies();
+//    }
     @GetMapping("/company/{id}")
     public Company getCompany(@PathVariable Long id){
         return companyService.findById(id).orElseThrow(() -> new CompanyNotFoundException(id));
