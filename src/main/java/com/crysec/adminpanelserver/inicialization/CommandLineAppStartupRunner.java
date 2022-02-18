@@ -115,7 +115,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         userE.setCompany(company);
         userE.setImage("https://avatars.dicebear.com/api/identicon/your-cusUSUARAIO5tom-aJHKDSAFGUYAGSYGSJHDS.png");
         userF.setCompany(company2);
-        userE.setImage("https://avatars.dicebear.com/api/identicon/your-custom-aJHKDASDJKLFJ6SAFGUYAGSYGSJHDS.png");
+        userF.setImage("https://avatars.dicebear.com/api/identicon/your-custom-aJHKDASDJKLFJ6SAFGUYAGSYGSJHDS.png");
         userG.setCompany(company2);
         userG.setImage("https://avatars.dicebear.com/api/identicon/your-custom-aJHKDSAFGUYAusuario7SYGSJHDS.png");
         userH.setCompany(company2);
