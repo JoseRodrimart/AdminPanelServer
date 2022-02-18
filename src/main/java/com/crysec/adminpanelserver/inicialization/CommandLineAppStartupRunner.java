@@ -131,7 +131,6 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
         group.addRegularUser(userA);
         group.addRegularUser(userB);
-
         group2.addRegularUser(userE);
         group2.addRegularUser(userD);
         group2.addRegularUser(userI);
