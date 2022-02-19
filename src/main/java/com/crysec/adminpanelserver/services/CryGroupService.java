@@ -12,7 +12,7 @@ public interface CryGroupService {
 
     public List<CryGroup> getAllGroups();
 
-    void updateGroup(CryGroup group);
+    CryGroup updateGroup(CryGroup group);
     public List<CryUser> companyUsersNotIncluded(Long id);
     public void deleteGroupMembers(Long id, Long userId);
 

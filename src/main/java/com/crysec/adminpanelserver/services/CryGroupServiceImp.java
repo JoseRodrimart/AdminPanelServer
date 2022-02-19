@@ -46,11 +46,11 @@ public class CryGroupServiceImp implements CryGroupService {
 
     @Transactional
     @Override
-    public void updateGroup(CryGroup group) {
+    public CryGroup updateGroup(CryGroup group) {
         CryGroup editingGroup = cryGroupRepository.findById(group.getId()).get();
         editingGroup.setName(group.getName());
         editingGroup.setType(group.getType());
-
+        return editingGroup;
     }
 
     @Override

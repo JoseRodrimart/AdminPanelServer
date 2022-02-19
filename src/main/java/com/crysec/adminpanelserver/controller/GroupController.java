@@ -32,9 +32,9 @@ public class GroupController {
     }
 
     @PutMapping("/group")
-    public void updateCompany(@RequestBody CryGroup group){
+    public CryGroup updateGroup(@RequestBody CryGroup group){
         System.out.println(group);
-        groupService.updateGroup(group);
+        return groupService.updateGroup(group);
     }
     @GetMapping("/group/{id}/companyusersnotincluded")
     public List<CryUser> getNotMembersUsers(@PathVariable Long id) {
